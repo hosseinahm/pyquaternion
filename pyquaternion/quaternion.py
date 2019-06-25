@@ -176,7 +176,7 @@ class Quaternion:
             raise ValueError("Invalid matrix shape: Input must be a 3x3 or 4x4 numpy array or matrix")
 
         # Check matrix properties
-        if not np.allclose(np.dot(R, R.conj().transpose()), np.eye(3)):
+        if not np.allclose(np.dot(R, R.conj().transpose()), np.eye(3), atol=1-6, rtol=0.0):
             raise ValueError("Matrix must be orthogonal, i.e. its transpose should be its inverse")
         if not np.isclose(np.linalg.det(R), 1.0):
             raise ValueError("Matrix must be special orthogonal i.e. its determinant must be +1.0")
